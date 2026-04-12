@@ -1,4 +1,5 @@
 import EntryForm from "./components/EntryForm";
+import EntryList from "./components/EntryList";
 
 export default function Home() {
   return (
@@ -6,6 +7,7 @@ export default function Home() {
       <h1 className="text-3xl font-semibold mb-1">AI Life Logger</h1>
       <p className="text-gray-500 text-sm">A private journal that understands you.</p>
       <EntryForm />
+      <EntryList />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 
@@ -8,6 +9,7 @@ export default function EntryForm() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function EntryForm() {
       setError("Something went wrong. Please try again.");
     } else {
       setSubmitted(true);
+      router.refresh();
       setEntry("");
       setTimeout(() => setSubmitted(false), 3000);
     }

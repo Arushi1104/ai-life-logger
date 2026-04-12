@@ -1,18 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 export default function EntryForm() {
   const [entry, setEntry] = useState("");
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!entry.trim()) return;
-    console.log("Entry submitted:", entry);
-    setSubmitted(true);
-    setEntry("");
-    setTimeout(() => setSubmitted(false), 3000);
+
+    setLoading(true);
+    setError(null);
+
+    const { error } = await supabase
+      .from("entries")
+      .insert({ content: entry.trim() });
+
+    if (error) {
+      setError("Something went wrong. Please try again.");
+    } else {
+      setSubmitted(true);
+      setEntry("");
+      setTimeout(() => setSubmitted(false), 3000);
+    }
+
+    setLoading(false);
   }
 
   return (
@@ -31,14 +47,17 @@ export default function EntryForm() {
         <span className="text-xs text-gray-400">{entry.length} characters</span>
         <button
           onClick={handleSubmit}
-          disabled={!entry.trim()}
+          disabled={!entry.trim() || loading}
           className="bg-gray-900 text-white text-sm px-5 py-2 rounded-lg disabled:opacity-40 hover:bg-gray-700 transition-colors"
         >
-          Save entry
+          {loading ? "Saving..." : "Save entry"}
         </button>
       </div>
       {submitted && (
         <p className="mt-3 text-sm text-green-700">Entry saved successfully.</p>
+      )}
+      {error && (
+        <p className="mt-3 text-sm text-red-600">{error}</p>
       )}
     </div>
   );

@@ -1,17 +1,5 @@
 import { supabase } from "../lib/supabase";
-
-const moodColors = {
-  happy: "bg-yellow-100 text-yellow-800",
-  sad: "bg-blue-100 text-blue-800",
-  anxious: "bg-orange-100 text-orange-800",
-  angry: "bg-red-100 text-red-800",
-  calm: "bg-teal-100 text-teal-800",
-  motivated: "bg-green-100 text-green-800",
-  tired: "bg-gray-100 text-gray-600",
-  grateful: "bg-purple-100 text-purple-800",
-  confused: "bg-pink-100 text-pink-800",
-  excited: "bg-indigo-100 text-indigo-800",
-};
+import MoodChart from "./MoodChart";
 
 export default async function EntryList() {
   const { data: entries, error } = await supabase
@@ -31,12 +19,29 @@ export default async function EntryList() {
     );
   }
 
+  const moodColors = {
+    happy: "bg-yellow-100 text-yellow-800",
+    sad: "bg-blue-100 text-blue-800",
+    anxious: "bg-orange-100 text-orange-800",
+    angry: "bg-red-100 text-red-800",
+    calm: "bg-teal-100 text-teal-800",
+    motivated: "bg-green-100 text-green-800",
+    tired: "bg-gray-100 text-gray-600",
+    grateful: "bg-purple-100 text-purple-800",
+    confused: "bg-pink-100 text-pink-800",
+    excited: "bg-indigo-100 text-indigo-800",
+  };
+
   return (
     <div className="mt-10">
       <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
+        Mood over time
+      </h2>
+      <MoodChart entries={entries} />
+
+      <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mt-10 mb-4">
         Past entries
       </h2>
-
       <div className="flex flex-col gap-4">
         {entries.map((entry) => (
           <div
@@ -54,20 +59,17 @@ export default async function EntryList() {
                   minute: "2-digit",
                 })}
               </p>
-
               {entry.mood && (
                 <span
                   className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    moodColors[entry.mood] ||
-                    "bg-gray-100 text-gray-600"
+                    moodColors[entry.mood] || "bg-gray-100 text-gray-600"
                   }`}
                 >
                   {entry.mood}
                 </span>
               )}
             </div>
-
-            <p className="text-sm text-gray-400 whitespace-pre-wrap leading-relaxed">
+            <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
               {entry.content}
             </p>
           </div>

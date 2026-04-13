@@ -5,7 +5,7 @@
 - React 19
 - Tailwind CSS v4
 - Supabase (coming soon)
-- Claude API (coming soon)
+- Groq API with llama-3.3-70b-versatile model (not Claude API)
 
 ## Code Rules
 

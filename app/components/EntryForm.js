@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "../lib/supabase";
 
 export default function EntryForm() {
@@ -18,16 +18,25 @@ export default function EntryForm() {
     setLoading(true);
     setError(null);
 
+    const moodRes = await fetch("/api/mood", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: entry.trim() }),
+    });
+
+    const moodData = await moodRes.json();
+    const mood = moodData.mood || null;
+
     const { error } = await supabase
       .from("entries")
-      .insert({ content: entry.trim() });
+      .insert({ content: entry.trim(), mood });
 
     if (error) {
       setError("Something went wrong. Please try again.");
     } else {
       setSubmitted(true);
-      router.refresh();
       setEntry("");
+      router.refresh();
       setTimeout(() => setSubmitted(false), 3000);
     }
 

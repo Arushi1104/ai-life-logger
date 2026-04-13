@@ -1,5 +1,6 @@
 import { supabase } from "../lib/supabase";
 import MoodChart from "./MoodChart";
+import SearchEntries from "./SearchEntries";
 
 export default async function EntryList() {
   const { data: entries, error } = await supabase
@@ -75,6 +76,7 @@ export default async function EntryList() {
           </div>
         ))}
       </div>
+      <SearchEntries entries={entries} />
     </div>
   );
 }

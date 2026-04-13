@@ -67,7 +67,7 @@ export default async function EntryList() {
               )}
             </div>
 
-            <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
+            <p className="text-sm text-gray-400 whitespace-pre-wrap leading-relaxed">
               {entry.content}
             </p>
           </div>

@@ -58,17 +58,17 @@ export default async function StreakTracker() {
   })();
 
   return (
-    <div className="mt-8 grid grid-cols-3 gap-3">
-      <div className="border border-gray-200 rounded-lg p-4 text-center">
-        <p className="text-2xl font-semibold text-gray-900">{streak}</p>
+    <div className="grid grid-cols-3 gap-3">
+      <div className="bg-white border border-gray-200 rounded-2xl p-4 text-center">
+        <p className="text-3xl font-semibold text-gray-900">{streak}</p>
         <p className="text-xs text-gray-400 mt-1">day streak</p>
       </div>
-      <div className="border border-gray-200 rounded-lg p-4 text-center">
-        <p className="text-2xl font-semibold text-gray-900">{totalEntries}</p>
+      <div className="bg-white border border-gray-200 rounded-2xl p-4 text-center">
+        <p className="text-3xl font-semibold text-gray-900">{totalEntries}</p>
         <p className="text-xs text-gray-400 mt-1">total entries</p>
       </div>
-      <div className="border border-gray-200 rounded-lg p-4 text-center">
-        <p className="text-2xl font-semibold text-gray-900">{longestStreak}</p>
+      <div className="bg-white border border-gray-200 rounded-2xl p-4 text-center">
+        <p className="text-3xl font-semibold text-gray-900">{longestStreak}</p>
         <p className="text-xs text-gray-400 mt-1">longest streak</p>
       </div>
     </div>

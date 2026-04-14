@@ -36,8 +36,8 @@ export default function ChatBox() {
   }
 
   return (
-    <div className="mt-12 border-t border-gray-200 pt-8">
-      <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
+    <div className="mt-6 bg-white border border-gray-200 rounded-2xl p-6">
+      <h2 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
         Ask about your journal
       </h2>
 

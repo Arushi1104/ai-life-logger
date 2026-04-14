@@ -1,7 +1,16 @@
-import { Geist } from "next/font/google";
+import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"] });
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  style: ["normal", "italic"],
+});
 
 export const metadata = {
   title: "AI Life Logger",
@@ -11,7 +20,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={geist.className} suppressHydrationWarning>
+      <body
+        className={`${manrope.variable} ${newsreader.variable}`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

@@ -22,9 +22,10 @@ export default async function StreakTracker() {
   const today = new Date().toLocaleDateString("en-CA");
   const yesterday = new Date(Date.now() - 86400000).toLocaleDateString("en-CA");
 
-  const startDay = uniqueDays[0] === today || uniqueDays[0] === yesterday
-    ? uniqueDays[0]
-    : null;
+  const startDay =
+    uniqueDays[0] === today || uniqueDays[0] === yesterday
+      ? uniqueDays[0]
+      : null;
 
   if (startDay) {
     let current = new Date(startDay);
@@ -57,20 +58,37 @@ export default async function StreakTracker() {
     return Math.max(longest, streak);
   })();
 
+  const stats = [
+    { value: streak, label: "day streak" },
+    { value: totalEntries, label: "total entries" },
+    { value: longestStreak, label: "longest streak" },
+  ];
+
   return (
-    <div className="grid grid-cols-3 gap-3">
-      <div className="bg-white border border-gray-200 rounded-2xl p-4 text-center">
-        <p className="text-3xl font-semibold text-gray-900">{streak}</p>
-        <p className="text-xs text-gray-400 mt-1">day streak</p>
-      </div>
-      <div className="bg-white border border-gray-200 rounded-2xl p-4 text-center">
-        <p className="text-3xl font-semibold text-gray-900">{totalEntries}</p>
-        <p className="text-xs text-gray-400 mt-1">total entries</p>
-      </div>
-      <div className="bg-white border border-gray-200 rounded-2xl p-4 text-center">
-        <p className="text-3xl font-semibold text-gray-900">{longestStreak}</p>
-        <p className="text-xs text-gray-400 mt-1">longest streak</p>
-      </div>
+    <div className="grid grid-cols-3 gap-3 mb-8">
+      {stats.map((stat) => (
+        <div
+          key={stat.label}
+          className="rounded-2xl p-4 text-center"
+          style={{
+            background: "white",
+            boxShadow: "0 20px 40px rgba(72, 84, 167, 0.06)",
+          }}
+        >
+          <p
+            className="text-3xl font-bold"
+            style={{ color: "var(--primary)" }}
+          >
+            {stat.value}
+          </p>
+          <p
+            className="text-xs mt-1"
+            style={{ color: "var(--on-surface-variant)" }}
+          >
+            {stat.label}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }

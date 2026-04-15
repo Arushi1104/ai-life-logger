@@ -4,24 +4,36 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../lib/supabase";
 
+const moodSuggestions = [
+  "Feeling Grateful",
+  "Feeling Anxious",
+  "Feeling Motivated",
+  "Feeling Tired",
+  "Feeling Happy",
+  "Feeling Reflective",
+];
+
 export default function EntryForm() {
   const [entry, setEntry] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const [activeSuggestion, setActiveSuggestion] = useState(null);
   const router = useRouter();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit() {
     if (!entry.trim()) return;
-
     setLoading(true);
     setError(null);
+
+    const fullContent = activeSuggestion
+      ? `${activeSuggestion}. ${entry.trim()}`
+      : entry.trim();
 
     const moodRes = await fetch("/api/mood", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: entry.trim() }),
+      body: JSON.stringify({ content: fullContent }),
     });
 
     const moodData = await moodRes.json();
@@ -29,13 +41,14 @@ export default function EntryForm() {
 
     const { error } = await supabase
       .from("entries")
-      .insert({ content: entry.trim(), mood });
+      .insert({ content: fullContent, mood });
 
     if (error) {
       setError("Something went wrong. Please try again.");
     } else {
       setSubmitted(true);
       setEntry("");
+      setActiveSuggestion(null);
       router.refresh();
       setTimeout(() => setSubmitted(false), 3000);
     }
@@ -44,32 +57,81 @@ export default function EntryForm() {
   }
 
   return (
-    <div className="mt-8 bg-white border border-gray-200 rounded-2xl p-6">
-      <label className="block text-sm font-medium text-gray-700 mb-3">
-        What happened today?
-      </label>
+    <div
+      className="rounded-2xl p-6 mb-8"
+      style={{
+        background: "white",
+        boxShadow: "0 20px 40px rgba(72, 84, 167, 0.06)",
+      }}
+    >
       <textarea
         value={entry}
         onChange={(e) => setEntry(e.target.value)}
         rows={5}
-        placeholder="Write anything — how you feel, what you did, what is on your mind..."
-        className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm resize-none focus:ring-2 focus:ring-gray-300 focus:border-transparent transition-all leading-relaxed"
+        placeholder="Write a few lines about your day..."
+        className="w-full text-sm leading-relaxed resize-none bg-transparent"
+        style={{
+          fontFamily: "var(--font-newsreader)",
+          fontSize: "16px",
+          color: "var(--on-surface)",
+          caretColor: "var(--primary)",
+          border: "none",
+        }}
       />
-      <div className="flex items-center justify-between mt-3">
-        <span className="text-xs text-gray-400">{entry.length} characters</span>
+
+      <div className="flex items-center justify-between mt-4 pt-4"
+        style={{ borderTop: "1px solid var(--outline-variant)" }}
+      >
+        <div className="flex flex-wrap gap-2">
+          {moodSuggestions.map((s) => (
+            <button
+              key={s}
+              onClick={() =>
+                setActiveSuggestion(activeSuggestion === s ? null : s)
+              }
+              className="text-xs px-3 py-1.5 rounded-full transition-all"
+              style={{
+                background:
+                  activeSuggestion === s
+                    ? "var(--primary)"
+                    : "var(--secondary-container)",
+                color:
+                  activeSuggestion === s
+                    ? "white"
+                    : "var(--on-secondary-container)",
+                fontFamily: "var(--font-manrope)",
+              }}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+
         <button
           onClick={handleSubmit}
           disabled={!entry.trim() || loading}
-          className="bg-gray-900 text-white text-sm px-5 py-2 rounded-xl disabled:opacity-40 hover:bg-gray-700 transition-colors font-medium"
+          className="text-sm px-5 py-2 rounded-xl font-semibold transition-all shrink-0 ml-4"
+          style={{
+            background: !entry.trim() || loading
+              ? "var(--surface-high)"
+              : `linear-gradient(135deg, var(--primary), var(--primary-dim))`,
+            color: !entry.trim() || loading
+              ? "var(--on-surface-variant)"
+              : "white",
+            fontFamily: "var(--font-manrope)",
+          }}
         >
-          {loading ? "Saving..." : "Save entry"}
+          {loading ? "Saving..." : "Save Entry"}
         </button>
       </div>
+
       {submitted && (
-        <p className="mt-3 text-sm text-green-700">Entry saved successfully.</p>
+        <p className="mt-3 text-sm" style={{ color: "var(--primary)" }}>
+          Entry saved successfully.
+        </p>
       )}
       {error && (
-        <p className="mt-3 text-sm text-red-600">{error}</p>
+        <p className="mt-3 text-sm text-red-500">{error}</p>
       )}
     </div>
   );

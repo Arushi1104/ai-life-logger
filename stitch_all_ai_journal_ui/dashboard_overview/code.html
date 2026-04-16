@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4854a7",
+                        "on-surface-variant": "#595b61",
+                        "background": "#f5f6fc",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f5f6fc",
+                        "on-tertiary-container": "#604567",
+                        "error-container": "#f74b6d",
+                        "on-primary-fixed": "#000643",
+                        "secondary-fixed-dim": "#d2b7ff",
+                        "on-secondary-fixed-variant": "#5e3f93",
+                        "primary-fixed": "#99a5fe",
+                        "surface-container-highest": "#dadde5",
+                        "primary-dim": "#3c489a",
+                        "on-tertiary": "#ffedfe",
+                        "on-error-container": "#510017",
+                        "inverse-on-surface": "#9b9da2",
+                        "outline-variant": "#abadb3",
+                        "tertiary": "#6e5275",
+                        "on-error": "#ffefef",
+                        "surface-container-low": "#eff0f7",
+                        "secondary": "#6a4b9f",
+                        "on-tertiary-fixed": "#4c3253",
+                        "on-surface": "#2c2f33",
+                        "surface-variant": "#dadde5",
+                        "tertiary-fixed": "#f5d1fb",
+                        "error-dim": "#a70138",
+                        "on-secondary-fixed": "#412075",
+                        "inverse-surface": "#0b0e12",
+                        "on-tertiary-fixed-variant": "#6a4e71",
+                        "on-primary-container": "#142175",
+                        "on-secondary-container": "#553689",
+                        "surface-container-high": "#e0e2ea",
+                        "tertiary-dim": "#614668",
+                        "secondary-dim": "#5d3e92",
+                        "tertiary-fixed-dim": "#e7c3ed",
+                        "secondary-container": "#dec8ff",
+                        "on-secondary": "#f9efff",
+                        "on-primary-fixed-variant": "#1f2b7e",
+                        "surface-dim": "#d1d4dd",
+                        "surface-container": "#e6e8ef",
+                        "primary-fixed-dim": "#8c97ef",
+                        "surface-tint": "#4854a7",
+                        "outline": "#74777c",
+                        "primary-container": "#99a5fe",
+                        "tertiary-container": "#f5d1fb",
+                        "on-background": "#2c2f33",
+                        "error": "#b41340",
+                        "secondary-fixed": "#dec8ff",
+                        "inverse-primary": "#99a5fe",
+                        "surface": "#f5f6fc",
+                        "on-primary": "#f3f1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Newsreader"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+        }
+        @media (max-width: 1024px) {
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-label antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(72,84,167,0.06)] flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-indigo-900 dark:text-indigo-100 font-manrope">ALL</span>
+<nav class="hidden md:flex items-center space-x-8 font-manrope text-sm tracking-tight">
+<a class="text-indigo-700 dark:text-indigo-300 font-semibold transition-all active:scale-95" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/20 transition-colors px-3 py-1 rounded-lg" href="#">Journal</a>
+<a class="text-slate-500 dark:text-slate-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/20 transition-colors px-3 py-1 rounded-lg" href="#">AI Chat</a>
+<a class="text-slate-500 dark:text-slate-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/20 transition-colors px-3 py-1 rounded-lg" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-slate-500 hover:bg-indigo-50/50 p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-slate-500 hover:bg-indigo-50/50 p-2 rounded-full transition-all">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User profile" data-alt="professional headshot of a smiling woman with warm lighting and a soft blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFEMJ5r2fZNQCmG8OidZgW51QoYLR_PAijgsmiUsufdZces--HIxIqaDazYX8avq3aX1ng1_ZG6RbYLcQo5hWCiLWSio5611q93rv6Jj8w27dhWpLBoFzRqXy0oKVPuNPuCG4crgw0XoA_vF4mYeEIWuze9Rmj2_2Tgn0vQAiK8emXbHiOqpc7V1GOK77n9YSDHJuTguaD5dgsYbKIN9zJpD_EETPVRTnKNTlCNy2_sCLbi0NJegGLMTG1fSfAIA7l-8AIg_yH-1A"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 z-40 bg-slate-50 dark:bg-slate-950 flex-col py-6 space-y-2 pt-20">
+<div class="px-6 mb-8">
+<h2 class="text-xl font-black text-indigo-900 dark:text-indigo-100 font-manrope">ALL</h2>
+<p class="text-xs text-slate-400 font-medium">AI Life Logger</p>
+</div>
+<nav class="flex flex-col space-y-1">
+<a class="flex items-center space-x-3 px-6 py-3 text-indigo-700 dark:text-indigo-300 font-bold border-r-4 border-indigo-600 bg-indigo-50/30" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-manrope text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-manrope text-sm font-medium">Journal</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-manrope text-sm font-medium">AI Chat</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="font-manrope text-sm font-medium">Insights</span>
+</a>
+<a class="flex items-center space-x-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">calendar_view_week</span>
+<span class="font-manrope text-sm font-medium">Weekly Report</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-24 px-6 md:px-12 pb-12">
+<div class="max-w-6xl mx-auto">
+<!-- Welcome & Quick Entry -->
+<section class="mb-12">
+<h1 class="font-body text-4xl md:text-5xl text-on-surface mb-8 tracking-tight">How are you today?</h1>
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_20px_40px_rgba(72,84,167,0.06)]">
+<textarea class="w-full bg-surface-container-low border-none rounded-xl p-6 font-body text-xl focus:ring-2 focus:ring-primary/20 placeholder:text-outline-variant transition-all" placeholder="Write a few lines about your morning..." rows="3"></textarea>
+<div class="flex justify-between items-center mt-6">
+<div class="flex space-x-2">
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all hover:brightness-95">
+<span class="material-symbols-outlined text-sm">mood</span>
+                                Feeling Grateful
+                            </button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-surface-variant">
+                                Add Image
+                            </button>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-xl font-medium shadow-lg hover:opacity-90 transition-all active:scale-95">
+                            Save Entry
+                        </button>
+</div>
+</div>
+</section>
+<!-- Dashboard Grid -->
+<div class="asymmetric-grid">
+<!-- Left Column -->
+<div class="space-y-8">
+<!-- Life at a Glance (Mood Chart) -->
+<div class="bg-surface-container-lowest rounded-xl p-8">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline font-bold text-lg text-indigo-900">Life at a Glance</h3>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-widest">Weekly Mood Trend</span>
+</div>
+<div class="h-64 w-full relative flex items-end justify-between px-4 pb-8 group">
+<!-- Visual placeholder for a sleek area graph -->
+<div class="absolute inset-x-4 bottom-8 h-32 bg-gradient-to-t from-primary/10 to-transparent rounded-t-3xl border-t-2 border-primary/30"></div>
+<div class="z-10 flex flex-col items-center">
+<div class="w-3 h-3 bg-primary rounded-full mb-2"></div>
+<span class="text-[10px] text-slate-400 font-bold">MON</span>
+</div>
+<div class="z-10 flex flex-col items-center mb-4">
+<div class="w-3 h-3 bg-primary rounded-full mb-2"></div>
+<span class="text-[10px] text-slate-400 font-bold">TUE</span>
+</div>
+<div class="z-10 flex flex-col items-center mb-8">
+<div class="w-3 h-3 bg-primary rounded-full mb-2"></div>
+<span class="text-[10px] text-slate-400 font-bold">WED</span>
+</div>
+<div class="z-10 flex flex-col items-center mb-6">
+<div class="w-3 h-3 bg-primary rounded-full mb-2"></div>
+<span class="text-[10px] text-slate-400 font-bold">THU</span>
+</div>
+<div class="z-10 flex flex-col items-center mb-12">
+<div class="w-3 h-3 bg-primary rounded-full mb-2 shadow-lg shadow-primary/20 scale-125"></div>
+<span class="text-[10px] text-primary font-bold">FRI</span>
+</div>
+<div class="z-10 flex flex-col items-center mb-10">
+<div class="w-3 h-3 bg-primary rounded-full mb-2"></div>
+<span class="text-[10px] text-slate-400 font-bold">SAT</span>
+</div>
+<div class="z-10 flex flex-col items-center mb-14">
+<div class="w-3 h-3 bg-primary rounded-full mb-2"></div>
+<span class="text-[10px] text-slate-400 font-bold">SUN</span>
+</div>
+</div>
+</div>
+<!-- Recent Feed -->
+<div class="space-y-4">
+<div class="flex justify-between items-center px-2">
+<h3 class="font-headline font-bold text-lg text-indigo-900">Recent Reflections</h3>
+<button class="text-sm font-medium text-primary hover:underline">View All</button>
+</div>
+<!-- Entry 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 border-l-4 border-primary">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-manrope font-semibold text-slate-400">TODAY, 10:24 AM</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">sunny</span>
+</div>
+<h4 class="font-body text-2xl mb-2 text-on-surface">The quiet before the storm</h4>
+<p class="font-body text-lg text-on-surface-variant line-clamp-2">Woke up to a perfectly still morning. The coffee tasted exceptionally bright today. Prepared for the big presentation with a sense of calm I haven't felt in weeks...</p>
+<div class="mt-6 flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-medium">#Productive</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-medium">#MorningRitual</span>
+</div>
+</article>
+<!-- Entry 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 opacity-90 transition-all hover:opacity-100">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-manrope font-semibold text-slate-400">YESTERDAY, 11:45 PM</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+</div>
+<h4 class="font-body text-2xl mb-2 text-on-surface">Reflection on the city walk</h4>
+<p class="font-body text-lg text-on-surface-variant line-clamp-2">The rain started just as I turned onto 5th. There's something about the neon reflections on wet pavement that makes everything feel cinematic...</p>
+</article>
+<!-- Entry 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 opacity-80 transition-all hover:opacity-100">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-manrope font-semibold text-slate-400">OCT 14, 02:15 PM</span>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">park</span>
+</div>
+<h4 class="font-body text-2xl mb-2 text-on-surface">Park bench musings</h4>
+<p class="font-body text-lg text-on-surface-variant line-clamp-2">Watched a golden retriever play fetch for 20 minutes. It reminded me to find joy in the simplest repetitions...</p>
+</article>
+</div>
+</div>
+<!-- Right Column -->
+<div class="space-y-8">
+<!-- AI Insights Card -->
+<div class="bg-gradient-to-br from-indigo-900 to-primary p-8 rounded-xl text-on-primary shadow-xl overflow-hidden relative">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-fixed">psychology</span>
+<span class="text-xs font-bold tracking-widest uppercase opacity-80">AI Analysis</span>
+</div>
+<p class="font-body text-2xl leading-relaxed mb-6">"You tend to feel more energetic after <span class="text-primary-fixed font-semibold">morning walks</span>."</p>
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/10">
+<p class="text-sm font-manrope opacity-90 leading-relaxed">Your journaling patterns show a 24% increase in positive sentiment on days you log activity before 9 AM.</p>
+</div>
+</div>
+</div>
+<!-- Streak Tracker -->
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col items-center text-center">
+<h3 class="font-headline font-bold text-lg text-indigo-900 mb-6">Consistency</h3>
+<div class="relative w-32 h-32 flex items-center justify-center mb-4">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90">
+<circle class="text-surface-container-low" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="100" stroke-width="8"></circle>
+</svg>
+<div class="flex flex-col">
+<span class="text-4xl font-bold text-on-surface">12</span>
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Days</span>
+</div>
+</div>
+<p class="text-sm font-medium text-on-surface-variant">Current Streak</p>
+<div class="mt-6 flex space-x-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-high"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-high"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-high"></div>
+</div>
+</div>
+<!-- Visual Inspiration Card -->
+<div class="rounded-xl overflow-hidden relative aspect-[4/5] shadow-lg group">
+<img alt="Morning light" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="misty forest at sunrise with soft golden light beams piercing through tall pine trees and a serene atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM8J_1KtlsjQ79Q7y7_WL9KzOVtTcB1Df4fFvn7MeMLxdjzr1ZHedovFP4p1rDCjpVY-nXdGLQJfJgIzCTOSt1LNVOMO_u9DOmQ8BxdQmPwuR__QMrML0U_ePIbFbCQ--q0tbimjrjN0c8p74yFbFZeBdU2QhaRYPIqrafahvUi7xiCeEcK7AWHArmmyLUP17UaOH4jwz5H68AbwYLXks6mczs-BTTM0CQ5tSwKGUeccmzFiIQEL6RJPVQu-ECA8GYj-H6FV_nd_Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<p class="font-body italic text-white/90 text-xl leading-relaxed">"Nature is the best physician."</p>
+<p class="text-xs text-white/60 font-manrope mt-2 uppercase tracking-widest">— Hippocrates</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/90 backdrop-blur-xl flex justify-around items-center z-50 border-t border-indigo-50">
+<button class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-[10px] font-bold">JOURNAL</span>
+</button>
+<button class="flex flex-col items-center -mt-8 bg-primary w-12 h-12 rounded-full shadow-lg text-white">
+<span class="material-symbols-outlined leading-[48px]">add</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-[10px] font-bold">AI CHAT</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="text-[10px] font-bold">INSIGHTS</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ALL - Journal &amp; Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4854a7",
+                        "on-surface-variant": "#595b61",
+                        "background": "#f5f6fc",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f5f6fc",
+                        "on-tertiary-container": "#604567",
+                        "error-container": "#f74b6d",
+                        "on-primary-fixed": "#000643",
+                        "secondary-fixed-dim": "#d2b7ff",
+                        "on-secondary-fixed-variant": "#5e3f93",
+                        "primary-fixed": "#99a5fe",
+                        "surface-container-highest": "#dadde5",
+                        "primary-dim": "#3c489a",
+                        "on-tertiary": "#ffedfe",
+                        "on-error-container": "#510017",
+                        "inverse-on-surface": "#9b9da2",
+                        "outline-variant": "#abadb3",
+                        "tertiary": "#6e5275",
+                        "on-error": "#ffefef",
+                        "surface-container-low": "#eff0f7",
+                        "secondary": "#6a4b9f",
+                        "on-tertiary-fixed": "#4c3253",
+                        "on-surface": "#2c2f33",
+                        "surface-variant": "#dadde5",
+                        "tertiary-fixed": "#f5d1fb",
+                        "error-dim": "#a70138",
+                        "on-secondary-fixed": "#412075",
+                        "inverse-surface": "#0b0e12",
+                        "on-tertiary-fixed-variant": "#6a4e71",
+                        "on-primary-container": "#142175",
+                        "on-secondary-container": "#553689",
+                        "surface-container-high": "#e0e2ea",
+                        "tertiary-dim": "#614668",
+                        "secondary-dim": "#5d3e92",
+                        "tertiary-fixed-dim": "#e7c3ed",
+                        "secondary-container": "#dec8ff",
+                        "on-secondary": "#f9efff",
+                        "on-primary-fixed-variant": "#1f2b7e",
+                        "surface-dim": "#d1d4dd",
+                        "surface-container": "#e6e8ef",
+                        "primary-fixed-dim": "#8c97ef",
+                        "surface-tint": "#4854a7",
+                        "outline": "#74777c",
+                        "primary-container": "#99a5fe",
+                        "tertiary-container": "#f5d1fb",
+                        "on-background": "#2c2f33",
+                        "error": "#b41340",
+                        "secondary-fixed": "#dec8ff",
+                        "inverse-primary": "#99a5fe",
+                        "surface": "#f5f6fc",
+                        "on-primary": "#f3f1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Newsreader"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-nav {
+            background-color: rgba(245, 246, 252, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-label text-on-surface selection:bg-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-[0_20px_40px_rgba(72,84,167,0.06)] flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-indigo-900 font-manrope">ALL</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-500 hover:bg-indigo-50/50 transition-colors px-3 py-1 rounded-lg" href="#">Dashboard</a>
+<a class="text-indigo-700 font-semibold hover:bg-indigo-50/50 transition-colors px-3 py-1 rounded-lg" href="#">Journal</a>
+<a class="text-slate-500 hover:bg-indigo-50/50 transition-colors px-3 py-1 rounded-lg" href="#">AI Chat</a>
+<a class="text-slate-500 hover:bg-indigo-50/50 transition-colors px-3 py-1 rounded-lg" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-indigo-50/50 transition-all active:scale-95 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-indigo-50/50 transition-all active:scale-95 rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 ring-2 ring-primary-container ring-offset-2">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close up portrait of a smiling woman with clear skin and thoughtful expression in soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWxXlIAfvXtoaR7i663axyYn9rMk6cN5SfIY1zcr6Nx_wtTx5YmnzZPdVBzp2WSTbsgRA6XcGjhrEkADBFPlDEURmsCC4-9soKTELH-u2p410IWY5mbKYdTSPsFePVx7LP-EqrPbrfOIU3AOfcfoQLeUdHF_QO2DCx8LUiE-seNYzR_b5csRW4vnAByb0jCD1V7b9OLAZv_Bq7Z25QhzMIMurMfKlo4bmFl2lUt03o55rg3g4cyT0RLfYBA2xK6wWo-WPBDJuyi4s"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on desktop as we use TopNavBar for this specific view, but included for structure if needed) -->
+<!-- Mobile Bottom Nav would go here if md:hidden -->
+<main class="pt-16 h-screen flex overflow-hidden">
+<!-- Sidebar: Archive List -->
+<aside class="w-80 md:w-96 flex flex-col bg-surface-container-low overflow-hidden">
+<div class="p-6 pb-2">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline font-bold text-xl tracking-tight text-on-surface">Archive</h2>
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-xl">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-4 pb-8 space-y-8 hide-scrollbar">
+<!-- Month Group -->
+<section>
+<h3 class="font-headline text-xs font-bold uppercase tracking-widest text-outline mb-4 px-2">October 2023</h3>
+<div class="space-y-3">
+<!-- Entry Item Active -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-[0_20px_40px_rgba(72,84,167,0.06)] border-l-4 border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline text-[10px] font-bold text-primary tracking-tighter">OCT 24</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold">Serene</span>
+</div>
+<h4 class="font-body text-lg font-semibold leading-tight mb-1 text-on-surface">The quiet before the storm of change</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-2">Today I sat by the window for an hour just watching the rain. There is a specific kind of peace that comes from...</p>
+</div>
+<!-- Entry Item -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline text-[10px] font-bold text-outline tracking-tighter">OCT 22</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold">Reflective</span>
+</div>
+<h4 class="font-body text-lg font-semibold leading-tight mb-1 text-on-surface">Midnight musings on a cold night</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-2">I found an old photograph today of the garden back in 2015. Everything felt so much larger then...</p>
+</div>
+<!-- Entry Item with Image tag -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline text-[10px] font-bold text-outline tracking-tighter">OCT 19</span>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="image">image</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold">Inspired</span>
+</div>
+</div>
+<h4 class="font-body text-lg font-semibold leading-tight mb-1 text-on-surface">Coffee and Color Theory</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-2">Spent the morning at the gallery. The way the light hits the blue canvas in the third room is something I need to remember...</p>
+</div>
+</div>
+</section>
+<section>
+<h3 class="font-headline text-xs font-bold uppercase tracking-widest text-outline mb-4 px-2">September 2023</h3>
+<div class="space-y-3">
+<div class="p-4 rounded-xl bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline text-[10px] font-bold text-outline tracking-tighter">SEP 30</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold">Tired</span>
+</div>
+<h4 class="font-body text-lg font-semibold leading-tight mb-1 text-on-surface">End of a long month</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-2">Work has been demanding, but I finally feel like I'm breaking through the fog. Tomorrow is a new start...</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Search in Archive -->
+<div class="p-4 bg-surface-container-low">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl pl-10 text-sm font-headline focus:ring-1 focus:ring-primary-fixed" placeholder="Search entries..." type="text"/>
+</div>
+</div>
+</aside>
+<!-- Main Content: Writing Area -->
+<section class="flex-1 bg-surface-container-lowest relative flex flex-col">
+<!-- Context Header -->
+<header class="px-12 py-8 flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<p class="font-headline text-sm font-bold text-primary-dim uppercase tracking-[0.2em]">Wednesday, October 25</p>
+<input class="w-full bg-transparent border-none p-0 font-body text-4xl font-semibold placeholder:text-surface-container-highest focus:ring-0 text-on-surface" placeholder="Title your reflection..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<!-- Distraction Free Toggle -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant text-sm font-headline font-semibold">
+<span class="material-symbols-outlined text-lg" data-icon="visibility_off">visibility_off</span>
+<span>Focus</span>
+</button>
+<!-- Mood Indicator -->
+<div class="flex items-center gap-3 bg-secondary-container/30 px-4 py-2 rounded-full">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="font-headline text-sm font-bold text-on-secondary-container">Detecting Mood...</span>
+</div>
+</div>
+</header>
+<!-- Editor Canvas -->
+<div class="flex-1 overflow-y-auto px-12 md:px-24 py-4 hide-scrollbar">
+<textarea class="w-full h-full bg-transparent border-none p-0 font-body text-xl leading-relaxed text-on-surface placeholder:text-surface-variant focus:ring-0 resize-none" placeholder="Begin your story..."></textarea>
+<!-- Attached Assets area -->
+<div class="mt-12 flex flex-wrap gap-4">
+<div class="relative w-48 h-48 rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="peaceful beach at dusk with gentle waves and a pastel pink and blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAVbVEVT1AV_jDWFOIsXAXik-IMFJ3Xv1fwJ0DeEWnKtjU5Q3qk2HTitPdg_IC9mMH2gxnpcC4few_wy__rUCFblmGegPbQLQ1TwZr_S1aQz4fS2b_73ByY2croWlTPmCp7UXSHhlvRBlMUR0cQuAbvPDt-u5c8ouyIR_3wWzqDouLxRRxnNqzMB1r_-xEAH8O5aBrx3Keei9YfxAwaxZVV8gLivh09rDSn2Jj-rRyBMa6KLQ98v5vRyUaQ3QI_2-qn_qiu8MyqRw"/>
+<button class="absolute top-2 right-2 p-1 bg-black/20 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<button class="w-48 h-48 rounded-2xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-2 hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="add_photo_alternate">add_photo_alternate</span>
+<span class="font-headline text-xs text-outline font-bold">Add memory</span>
+</button>
+</div>
+<div class="mt-8 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-xs font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="tag">tag</span>
+                        Travel
+                    </span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-xs font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="tag">tag</span>
+                        Gratitude
+                    </span>
+<button class="px-3 py-1 hover:bg-surface-container-low text-primary text-xs font-bold rounded-full transition-colors">
+                        + Add Tag
+                    </button>
+</div>
+</div>
+<!-- Toolbar / Footer -->
+<footer class="p-8 flex justify-center">
+<div class="bg-surface/80 backdrop-blur-xl px-6 py-3 rounded-full shadow-[0_20px_40px_rgba(72,84,167,0.06)] flex items-center gap-8 ring-1 ring-black/5">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="format_bold">format_bold</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="format_italic">format_italic</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<button class="bg-gradient-to-br from-primary to-primary-container px-6 py-2 rounded-full text-on-primary font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                        Save Entry
+                    </button>
+</div>
+</footer>
+<!-- Floating Action Button (Only on Mobile normally, but here contextually useful for New Entry) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:bg-primary-dim transition-all active:scale-95 md:hidden">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</section>
+</main>
+</body></html>

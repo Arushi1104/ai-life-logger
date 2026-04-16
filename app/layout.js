@@ -3,12 +3,12 @@ import "./globals.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  display: "swap",
 });
 
 const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-newsreader",
+  display: "swap",
   style: ["normal", "italic"],
 });
 
@@ -20,10 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${manrope.variable} ${newsreader.variable}`}
-        suppressHydrationWarning
-      >
+      <body suppressHydrationWarning style={{
+        fontFamily: manrope.style.fontFamily,
+      }}>
+        <style>{`
+          :root {
+            --font-manrope: ${manrope.style.fontFamily};
+            --font-newsreader: ${newsreader.style.fontFamily};
+          }
+        `}</style>
         {children}
       </body>
     </html>

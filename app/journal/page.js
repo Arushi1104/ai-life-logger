@@ -7,25 +7,32 @@ import WeeklyReport from "../components/WeeklyReport";
 import StreakTracker from "../components/StreakTracker";
 
 export default function JournalPage() {
+  const today = new Date().toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+
   return (
     <SidebarLayout>
-      <div className="max-w-3xl mx-auto px-8 py-10">
-        <h1
-          className="text-4xl mb-1"
-          style={{
-            fontFamily: "var(--font-newsreader)",
-            fontStyle: "italic",
-            color: "var(--on-surface)",
-          }}
-        >
+      <div style={{ maxWidth: "720px", margin: "0 auto", padding: "48px 32px" }}>
+        <h1 style={{
+          fontFamily: "var(--font-newsreader)",
+          fontStyle: "italic",
+          fontSize: "42px",
+          fontWeight: 400,
+          color: "var(--on-surface)",
+          marginBottom: "4px",
+          lineHeight: 1.2,
+        }}>
           How are you today?
         </h1>
-        <p className="text-sm mb-8" style={{ color: "var(--on-surface-variant)" }}>
-          {new Date().toLocaleDateString("en-IN", {
-            weekday: "long",
-            month: "long",
-            day: "numeric",
-          })}
+        <p style={{
+          fontSize: "13px",
+          color: "var(--on-surface-variant)",
+          marginBottom: "32px",
+        }}>
+          {today}
         </p>
         <StreakTracker />
         <EntryForm />

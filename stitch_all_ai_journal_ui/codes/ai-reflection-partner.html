@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Chat Reflection - ALL</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#4854a7",
+                    "on-surface-variant": "#595b61",
+                    "background": "#f5f6fc",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f5f6fc",
+                    "on-tertiary-container": "#604567",
+                    "error-container": "#f74b6d",
+                    "on-primary-fixed": "#000643",
+                    "secondary-fixed-dim": "#d2b7ff",
+                    "on-secondary-fixed-variant": "#5e3f93",
+                    "primary-fixed": "#99a5fe",
+                    "surface-container-highest": "#dadde5",
+                    "primary-dim": "#3c489a",
+                    "on-tertiary": "#ffedfe",
+                    "on-error-container": "#510017",
+                    "inverse-on-surface": "#9b9da2",
+                    "outline-variant": "#abadb3",
+                    "tertiary": "#6e5275",
+                    "on-error": "#ffefef",
+                    "surface-container-low": "#eff0f7",
+                    "secondary": "#6a4b9f",
+                    "on-tertiary-fixed": "#4c3253",
+                    "on-surface": "#2c2f33",
+                    "surface-variant": "#dadde5",
+                    "tertiary-fixed": "#f5d1fb",
+                    "error-dim": "#a70138",
+                    "on-secondary-fixed": "#412075",
+                    "inverse-surface": "#0b0e12",
+                    "on-tertiary-fixed-variant": "#6a4e71",
+                    "on-primary-container": "#142175",
+                    "on-secondary-container": "#553689",
+                    "surface-container-high": "#e0e2ea",
+                    "tertiary-dim": "#614668",
+                    "secondary-dim": "#5d3e92",
+                    "tertiary-fixed-dim": "#e7c3ed",
+                    "secondary-container": "#dec8ff",
+                    "on-secondary": "#f9efff",
+                    "on-primary-fixed-variant": "#1f2b7e",
+                    "surface-dim": "#d1d4dd",
+                    "surface-container": "#e6e8ef",
+                    "primary-fixed-dim": "#8c97ef",
+                    "surface-tint": "#4854a7",
+                    "outline": "#74777c",
+                    "primary-container": "#99a5fe",
+                    "tertiary-container": "#f5d1fb",
+                    "on-background": "#2c2f33",
+                    "error": "#b41340",
+                    "secondary-fixed": "#dec8ff",
+                    "inverse-primary": "#99a5fe",
+                    "surface": "#f5f6fc",
+                    "on-primary": "#f3f1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Newsreader"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .editorial-shadow {
+            box-shadow: 0 20px 40px rgba(72, 84, 167, 0.06);
+        }
+        .glass-header {
+            background: rgba(245, 246, 252, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        .glow-avatar {
+            box-shadow: 0 0 20px rgba(153, 165, 254, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface font-label text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(72,84,167,0.06)] flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-indigo-900 dark:text-indigo-100 font-manrope">ALL</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-slate-500 dark:text-slate-400 font-manrope text-sm tracking-tight hover:bg-indigo-50/50 transition-colors px-3 py-2 rounded-xl" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 font-manrope text-sm tracking-tight hover:bg-indigo-50/50 transition-colors px-3 py-2 rounded-xl" href="#">Journal</a>
+<a class="text-indigo-700 dark:text-indigo-300 font-semibold font-manrope text-sm tracking-tight px-3 py-2 rounded-xl" href="#">AI Chat</a>
+<a class="text-slate-500 dark:text-slate-400 font-manrope text-sm tracking-tight hover:bg-indigo-50/50 transition-colors px-3 py-2 rounded-xl" href="#">Insights</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:bg-indigo-50/50 p-2 rounded-full transition-all active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-slate-500 hover:bg-indigo-50/50 p-2 rounded-full transition-all active:scale-95">settings</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional headshot of a smiling woman with warm lighting and a soft blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACnUEOF5Q5i6rYEbpkvTCF6RKTouX220fuZOVCWA0bYbcXJBefGnRmCaPMLnGZjvcWkCe_s1o-GBCGifJg9UDxTiEk_cVs98UbBo6FpP7f18sbaOxGFy_ywTGlc3KD0t8374PArJEpJv_Zfo4PPox3MANAIFipHD7IYF5oZxZAfG_-u1rOD2cO4PCDT5gWdc0Uew032NVGoAiiYC27ukxtPL2eGKW-rb-HZ6FD8kbwZmqnpTniU1OQcKAMHrAtq5JoSdnylkczWWE"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 z-40 bg-slate-50 dark:bg-slate-950 flex flex-col py-6 space-y-2 pt-20 border-r border-transparent">
+<div class="px-6 mb-8">
+<h2 class="text-xl font-black text-indigo-900 dark:text-indigo-100 font-manrope">ALL</h2>
+<p class="text-xs text-on-surface-variant opacity-70 font-manrope uppercase tracking-widest">AI Life Logger</p>
+</div>
+<div class="flex flex-col space-y-1 px-4">
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-500 font-manrope text-sm font-medium hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-500 font-manrope text-sm font-medium hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span>Journal</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl text-indigo-700 dark:text-indigo-300 font-bold border-r-4 border-indigo-600 bg-indigo-50/30 font-manrope text-sm transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span>AI Chat</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-500 font-manrope text-sm font-medium hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">lightbulb</span>
+<span>Insights</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-500 font-manrope text-sm font-medium hover:bg-slate-200/50 transition-all" href="#">
+<span class="material-symbols-outlined">calendar_view_week</span>
+<span>Weekly Report</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-64 pt-20 pb-24 min-h-screen flex flex-col items-center">
+<div class="w-full max-w-3xl px-6 md:px-12 flex-1 flex flex-col">
+<!-- Chat Header / Intro -->
+<div class="text-center py-12">
+<div class="inline-block relative">
+<div class="w-20 h-20 rounded-full bg-gradient-to-tr from-primary to-primary-container glow-avatar mb-6 mx-auto flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-white/20 blur-sm"></div>
+<span class="material-symbols-outlined text-white text-4xl" data-weight="fill">auto_awesome</span>
+</div>
+</div>
+<h1 class="font-body text-4xl text-on-surface italic mb-2 tracking-tight">Your Reflection Partner</h1>
+<p class="font-label text-on-surface-variant text-sm max-w-sm mx-auto leading-relaxed">A gentle space to explore your thoughts and find patterns in your journey.</p>
+</div>
+<!-- Messages Container -->
+<div class="space-y-12 mb-12 flex-1">
+<!-- AI Message -->
+<div class="flex flex-col space-y-4 max-w-[85%]">
+<div class="flex items-center gap-3">
+<span class="text-[10px] uppercase tracking-widest font-bold text-primary font-label">The Observer</span>
+<div class="h-[1px] flex-1 bg-surface-container-high"></div>
+</div>
+<div class="bg-surface-container-lowest editorial-shadow rounded-2xl rounded-tl-none p-6 text-on-surface font-body text-lg leading-relaxed border border-indigo-50/30">
+                        Welcome back. I've been reflecting on our conversation from <span class="italic text-primary">Last Tuesday</span>. You mentioned feeling quite overwhelmed by the new project at work. 
+                        <br/><br/>
+                        How are you holding that feeling today?
+                    </div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col space-y-4 max-w-[85%] self-end items-end">
+<div class="flex items-center gap-3 w-full">
+<div class="h-[1px] flex-1 bg-surface-container-high"></div>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant font-label">You</span>
+</div>
+<div class="bg-primary text-on-primary editorial-shadow rounded-2xl rounded-tr-none p-6 font-body text-lg leading-relaxed">
+                        I'm feeling a bit better today, actually. I managed to break the tasks down into smaller pieces, but I'm still worried about the deadline.
+                    </div>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col space-y-4 max-w-[85%]">
+<div class="flex items-center gap-3">
+<span class="text-[10px] uppercase tracking-widest font-bold text-primary font-label">The Observer</span>
+<div class="h-[1px] flex-1 bg-surface-container-high"></div>
+</div>
+<div class="bg-surface-container-lowest editorial-shadow rounded-2xl rounded-tl-none p-6 text-on-surface font-body text-lg leading-relaxed border border-indigo-50/30">
+                        That sounds like a constructive step forward. I noticed a similar pattern in your entry from <span class="italic text-primary">three weeks ago</span>—whenever you face a large obstacle, your first instinct is to organize. 
+                        <br/><br/>
+                        Do you feel like that organization helps with the anxiety, or just the workload?
+                    </div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex items-center space-x-2 px-2">
+<div class="w-1.5 h-1.5 bg-indigo-300 rounded-full animate-pulse"></div>
+<div class="w-1.5 h-1.5 bg-indigo-300 rounded-full animate-pulse [animation-delay:200ms]"></div>
+<div class="w-1.5 h-1.5 bg-indigo-300 rounded-full animate-pulse [animation-delay:400ms]"></div>
+<span class="text-xs font-label text-on-surface-variant/60 italic ml-2">Partnering is reflecting...</span>
+</div>
+</div>
+<!-- Suggested Prompts -->
+<div class="flex flex-wrap gap-3 mb-8">
+<button class="px-5 py-2.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-sm hover:bg-secondary-container/80 transition-all border border-indigo-100/50">
+                    Help me reflect on my week
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-sm hover:bg-secondary-container/80 transition-all border border-indigo-100/50">
+                    What's a pattern you've noticed recently?
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-sm hover:bg-secondary-container/80 transition-all border border-indigo-100/50">
+                    Tell me something positive from my history
+                </button>
+</div>
+</div>
+</main>
+<!-- Fixed Input Field -->
+<div class="fixed bottom-0 left-0 lg:left-64 right-0 glass-header p-6 flex justify-center z-40">
+<div class="w-full max-w-3xl flex items-center gap-4">
+<div class="relative flex-1 group">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-6 py-4 font-body text-xl placeholder:italic placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Write your thoughts..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-gradient-to-tr from-primary to-primary-dim text-on-primary flex items-center justify-center active:scale-95 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+<button class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+<div class="absolute -top-24 -left-24 w-[500px] h-[500px] bg-indigo-100/30 rounded-full blur-[100px]"></div>
+<div class="absolute top-1/2 -right-48 w-[600px] h-[600px] bg-secondary-container/20 rounded-full blur-[120px]"></div>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-xl h-16 flex justify-around items-center z-50 px-4">
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">HOME</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-[10px] font-bold">JOURNAL</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-indigo-700">
+<span class="material-symbols-outlined" data-weight="fill">forum</span>
+<span class="text-[10px] font-bold">CHAT</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="text-[10px] font-bold">IDEAS</span>
+</button>
+</nav>
+</body></html>

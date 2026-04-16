@@ -9,74 +9,131 @@ export default async function EntryList() {
     .order("created_at", { ascending: false });
 
   if (error) {
-    return <p className="text-sm text-red-600 mt-8">Could not load entries.</p>;
+    return (
+      <p className="text-sm mt-8" style={{ color: "var(--on-surface-variant)" }}>
+        Could not load entries.
+      </p>
+    );
   }
 
   if (!entries || entries.length === 0) {
     return (
-      <p className="text-sm text-gray-400 mt-8">
+      <p className="text-sm mt-8" style={{ color: "var(--on-surface-variant)" }}>
         No entries yet. Write your first one above.
       </p>
     );
   }
 
-  const moodColors = {
-    happy: "bg-yellow-100 text-yellow-800",
-    sad: "bg-blue-100 text-blue-800",
-    anxious: "bg-orange-100 text-orange-800",
-    angry: "bg-red-100 text-red-800",
-    calm: "bg-teal-100 text-teal-800",
-    motivated: "bg-green-100 text-green-800",
-    tired: "bg-gray-100 text-gray-600",
-    grateful: "bg-purple-100 text-purple-800",
-    confused: "bg-pink-100 text-pink-800",
-    excited: "bg-indigo-100 text-indigo-800",
+  const moodStyles = {
+    happy: { background: "#fef9c3", color: "#854d0e" },
+    sad: { background: "#dbeafe", color: "#1e40af" },
+    anxious: { background: "#ffedd5", color: "#9a3412" },
+    angry: { background: "#fee2e2", color: "#991b1b" },
+    calm: { background: "#ccfbf1", color: "#134e4a" },
+    motivated: { background: "#dcfce7", color: "#166534" },
+    tired: { background: "#f3f4f6", color: "#374151" },
+    grateful: { background: "#ede9fe", color: "#5b21b6" },
+    confused: { background: "#fce7f3", color: "#9d174d" },
+    excited: { background: "#e0e7ff", color: "#3730a3" },
   };
+
+  const grouped = entries.reduce((acc, entry) => {
+    const month = new Date(entry.created_at).toLocaleDateString("en-IN", {
+      month: "long",
+      year: "numeric",
+    });
+    if (!acc[month]) acc[month] = [];
+    acc[month].push(entry);
+    return acc;
+  }, {});
 
   return (
     <div className="mt-10">
-      <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
+      <h2
+        className="text-xs font-semibold uppercase tracking-widest mb-6"
+        style={{ color: "var(--on-surface-variant)" }}
+      >
         Mood over time
       </h2>
-      <MoodChart entries={entries} />
-
-      <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mt-10 mb-4">
-        Past entries
-      </h2>
-      <div className="flex flex-col gap-4">
-        {entries.map((entry) => (
-          <div
-            key={entry.id}
-            className="border border-gray-200 rounded-lg p-4"
-          >
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-xs text-gray-400">
-                {new Date(entry.created_at).toLocaleDateString("en-IN", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </p>
-              {entry.mood && (
-                <span
-                  className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    moodColors[entry.mood] || "bg-gray-100 text-gray-600"
-                  }`}
-                >
-                  {entry.mood}
-                </span>
-              )}
-            </div>
-            <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
-              {entry.content}
-            </p>
-          </div>
-        ))}
+      <div
+        className="rounded-2xl p-6 mb-10"
+        style={{
+          background: "white",
+          boxShadow: "0 20px 40px rgba(72, 84, 167, 0.06)",
+        }}
+      >
+        <MoodChart entries={entries} />
       </div>
+
       <SearchEntries entries={entries} />
+
+      <h2
+        className="text-xs font-semibold uppercase tracking-widest mt-10 mb-6"
+        style={{ color: "var(--on-surface-variant)" }}
+      >
+        Recent reflections
+      </h2>
+
+      {Object.entries(grouped).map(([month, monthEntries]) => (
+        <div key={month} className="mb-8">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest mb-4"
+            style={{ color: "var(--on-surface-variant)", opacity: 0.6 }}
+          >
+            {month}
+          </p>
+          <div className="flex flex-col gap-4">
+            {monthEntries.map((entry) => (
+              <div
+                key={entry.id}
+                className="rounded-2xl p-6"
+                style={{
+                  background: "white",
+                  boxShadow: "0 20px 40px rgba(72, 84, 167, 0.06)",
+                  borderLeft: "3px solid var(--primary-container)",
+                }}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <p
+                    className="text-xs uppercase tracking-widest"
+                    style={{ color: "var(--on-surface-variant)" }}
+                  >
+                    {new Date(entry.created_at).toLocaleDateString("en-IN", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
+                  {entry.mood && (
+                    <span
+                      className="text-xs font-medium px-3 py-1 rounded-full shrink-0 ml-3"
+                      style={
+                        moodStyles[entry.mood] || {
+                          background: "var(--secondary-container)",
+                          color: "var(--on-secondary-container)",
+                        }
+                      }
+                    >
+                      {entry.mood}
+                    </span>
+                  )}
+                </div>
+                <p
+                  className="text-base leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-newsreader)",
+                    color: "var(--on-surface)",
+                  }}
+                >
+                  {entry.content}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

@@ -38,72 +38,156 @@ export default function WeeklyReport() {
   });
 
   return (
-    <div className="mt-6 bg-white border border-gray-200 rounded-2xl p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-sm font-medium text-gray-400 uppercase tracking-wide">
+    <div
+      className="rounded-2xl p-6 mt-6"
+      style={{
+        background: "white",
+        boxShadow: "0 20px 40px rgba(72, 84, 167, 0.06)",
+      }}
+    >
+      <div className="flex items-center justify-between mb-6">
+        <h2
+          className="text-xs font-semibold uppercase tracking-widest"
+          style={{ color: "var(--on-surface-variant)" }}
+        >
           Weekly report
         </h2>
         <button
           onClick={handleFetch}
           disabled={loading}
-          className="bg-gray-900 text-white text-sm px-4 py-2 rounded-lg disabled:opacity-40 hover:bg-gray-700 transition-colors"
+          className="text-sm px-4 py-2 rounded-xl font-semibold transition-all"
+          style={{
+            background: loading
+              ? "var(--surface-high)"
+              : `linear-gradient(135deg, var(--primary), var(--primary-dim))`,
+            color: loading ? "var(--on-surface-variant)" : "white",
+            fontFamily: "var(--font-manrope)",
+          }}
         >
           {loading ? "Generating..." : "Generate this week"}
         </button>
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
 
       {open && message && (
-        <p className="text-sm text-gray-500">{message}</p>
+        <p
+          className="text-sm"
+          style={{
+            color: "var(--on-surface-variant)",
+            fontFamily: "var(--font-newsreader)",
+            fontStyle: "italic",
+          }}
+        >
+          {message}
+        </p>
       )}
 
       {open && report && (
-        <div className="border border-gray-200 rounded-lg p-6 flex flex-col gap-5">
-          <div className="border-b border-gray-100 pb-4">
-            <p className="text-xs text-gray-400 mb-1">{today}</p>
-            <p className="text-base font-medium text-gray-900">
+        <div className="flex flex-col gap-5">
+          <div>
+            <p
+              className="text-xs uppercase tracking-widest mb-2"
+              style={{ color: "var(--on-surface-variant)" }}
+            >
+              {today} — {entryCount}{" "}
+              {entryCount === 1 ? "entry" : "entries"} this week
+            </p>
+            <h3
+              className="text-2xl leading-snug"
+              style={{
+                fontFamily: "var(--font-newsreader)",
+                fontStyle: "italic",
+                color: "var(--on-surface)",
+              }}
+            >
               {report.greeting}
-            </p>
-            <p className="text-xs text-gray-400 mt-1">
-              Based on {entryCount} {entryCount === 1 ? "entry" : "entries"} this week
-            </p>
+            </h3>
           </div>
 
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
+          <div
+            className="rounded-xl p-4"
+            style={{ background: "var(--surface-low)" }}
+          >
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-2"
+              style={{ color: "var(--on-surface-variant)" }}
+            >
               How your week went
             </p>
-            <p className="text-sm text-gray-800 leading-relaxed">
+            <p
+              className="text-sm leading-relaxed"
+              style={{
+                fontFamily: "var(--font-newsreader)",
+                color: "var(--on-surface)",
+              }}
+            >
               {report.mood_arc}
             </p>
           </div>
 
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
+          <div
+            className="rounded-xl p-4"
+            style={{ background: "var(--surface-low)" }}
+          >
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-3"
+              style={{ color: "var(--on-surface-variant)" }}
+            >
               Highlights
             </p>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-2">
               {report.highlights.map((h, i) => (
-                <li key={i} className="text-sm text-gray-800">
+                <li
+                  key={i}
+                  className="text-sm leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-newsreader)",
+                    color: "var(--on-surface)",
+                  }}
+                >
                   — {h}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
+          <div
+            className="rounded-xl p-5"
+            style={{ background: "var(--surface-low)" }}
+          >
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-2"
+              style={{ color: "var(--on-surface-variant)" }}
+            >
               Reflection
             </p>
-            <p className="text-sm text-gray-800 leading-relaxed">
+            <p
+              className="text-sm leading-relaxed"
+              style={{
+                fontFamily: "var(--font-newsreader)",
+                color: "var(--on-surface)",
+              }}
+            >
               {report.reflection}
             </p>
           </div>
 
-          <div className="border-t border-gray-100 pt-4">
-            <p className="text-sm text-gray-500 italic">
-              {report.going_forward}
+          <div
+            className="rounded-xl p-5"
+            style={{
+              background: `linear-gradient(135deg, var(--primary), var(--primary-dim))`,
+            }}
+          >
+            <p
+              className="text-base leading-relaxed"
+              style={{
+                fontFamily: "var(--font-newsreader)",
+                fontStyle: "italic",
+                color: "white",
+              }}
+            >
+              "{report.going_forward}"
             </p>
           </div>
         </div>

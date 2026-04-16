@@ -7,6 +7,8 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  Area,
+  AreaChart,
 } from "recharts";
 
 const moodScore = {
@@ -39,9 +41,17 @@ function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
     const d = payload[0].payload;
     return (
-      <div className="bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs shadow-sm">
-        <p className="text-gray-500">{d.date}</p>
-        <p className="font-medium text-gray-900 capitalize">{d.mood}</p>
+      <div
+        className="rounded-xl px-4 py-3 text-xs"
+        style={{
+          background: "white",
+          boxShadow: "0 20px 40px rgba(72, 84, 167, 0.12)",
+          fontFamily: "var(--font-manrope)",
+          color: "var(--on-surface)",
+        }}
+      >
+        <p style={{ color: "var(--on-surface-variant)" }}>{d.date}</p>
+        <p className="font-semibold capitalize mt-0.5">{d.mood}</p>
       </div>
     );
   }
@@ -64,7 +74,10 @@ export default function MoodChart({ entries }) {
 
   if (data.length < 2) {
     return (
-      <p className="text-sm text-gray-400">
+      <p
+        className="text-sm py-4 text-center"
+        style={{ color: "var(--on-surface-variant)" }}
+      >
         Write at least 2 entries with detected moods to see your chart.
       </p>
     );
@@ -72,33 +85,44 @@ export default function MoodChart({ entries }) {
 
   return (
     <ResponsiveContainer width="100%" height={180}>
-      <LineChart data={data}>
+      <AreaChart data={data}>
+        <defs>
+          <linearGradient id="moodGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#4854a7" stopOpacity={0.1} />
+            <stop offset="95%" stopColor="#4854a7" stopOpacity={0} />
+          </linearGradient>
+        </defs>
         <XAxis
           dataKey="date"
-          tick={{ fontSize: 11, fill: "#9ca3af" }}
+          tick={{
+            fontSize: 11,
+            fill: "#9496a8",
+            fontFamily: "var(--font-manrope)",
+          }}
           axisLine={false}
           tickLine={false}
         />
         <YAxis hide domain={[0, 10]} />
         <Tooltip content={<CustomTooltip />} />
-        <Line
+        <Area
           type="monotone"
           dataKey="score"
-          stroke="#111827"
-          strokeWidth={1.5}
+          stroke="#4854a7"
+          strokeWidth={2}
+          fill="url(#moodGradient)"
           dot={({ cx, cy, payload }) => (
             <circle
               key={payload.date}
               cx={cx}
               cy={cy}
-              r={4}
+              r={5}
               fill={payload.color}
               stroke="white"
-              strokeWidth={1.5}
+              strokeWidth={2}
             />
           )}
         />
-      </LineChart>
+      </AreaChart>
     </ResponsiveContainer>
   );
 }

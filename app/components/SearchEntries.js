@@ -39,17 +39,27 @@ export default function SearchEntries({ entries }) {
   }
 
   return (
-    <div className="mt-12 border-t border-gray-200 pt-8">
-      <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
-        Search entries
-      </h2>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for a word or phrase..."
-        className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
-      />
+    <div className="mb-10">
+    <h2
+      className="text-xs font-semibold uppercase tracking-widest mb-4"
+      style={{ color: "var(--on-surface-variant)" }}
+    >
+      Search entries
+    </h2>
+    <input
+      type="text"
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      placeholder="Search for a word or phrase..."
+      className="w-full px-5 py-3 rounded-2xl text-sm transition-all"
+      style={{
+        background: "var(--surface-low)",
+        border: "none",
+        fontFamily: "var(--font-manrope)",
+        color: "var(--on-surface)",
+        caretColor: "var(--primary)",
+      }}
+    />
 
       {query.trim() && (
         <div className="mt-4">
@@ -65,10 +75,18 @@ export default function SearchEntries({ entries }) {
               {filtered.map((entry) => (
                 <div
                   key={entry.id}
-                  className="border border-gray-200 rounded-lg p-4"
+                  className="rounded-2xl p-6"
+                  style={{
+                    background: "white",
+                    boxShadow: "0 20px 40px rgba(72, 84, 167, 0.06)",
+                    borderLeft: "3px solid var(--primary-container)",
+                  }}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-xs text-gray-400">
+                    <p
+                      className="text-xs uppercase tracking-widest"
+                      style={{ color: "var(--on-surface-variant)" }}
+                    >
                       {new Date(entry.created_at).toLocaleDateString("en-IN", {
                         weekday: "long",
                         year: "numeric",
@@ -78,15 +96,23 @@ export default function SearchEntries({ entries }) {
                     </p>
                     {entry.mood && (
                       <span
-                        className={`text-xs font-medium px-2 py-1 rounded-full ${
-                          moodColors[entry.mood] || "bg-gray-100 text-gray-600"
-                        }`}
+                        className="text-xs font-medium px-3 py-1 rounded-full"
+                        style={{
+                          background: "var(--secondary-container)",
+                          color: "var(--on-secondary-container)",
+                        }}
                       >
                         {entry.mood}
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{
+                      fontFamily: "var(--font-newsreader)",
+                      color: "var(--on-surface)",
+                    }}
+                  >
                     {highlight(entry.content, query)}
                   </p>
                 </div>
